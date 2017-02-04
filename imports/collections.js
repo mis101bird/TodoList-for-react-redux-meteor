@@ -1,2 +1,2 @@
-const Todos = Mongo.Collection("todos");
+const Todos = new Mongo.Collection("todos");
 export default Todos;

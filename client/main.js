@@ -1,22 +1,26 @@
-import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import Store from '../imports/client/store/store';
+import AddTodoInput from '../imports/client/components/addTodoInput';
+import ToDoList from '../imports/client/components/todoList';
+import VisibilityFilter from '../imports/client/components/visibilityFilter';
 
-import './main.html';
+function TodoAppRoot() {
+  return (
+    <Provider store={Store}>
+    <div className='todo-container'>
+        <AddTodoInput />
+        <ToDoList />
+        <VisibilityFilter />
+    </div>
+    </Provider>
+  );
+}
 
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
-});
-
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
-  },
-});
-
-Template.hello.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
-  },
+Meteor.startup(()=> {
+  ReactDOM.render(
+    <TodoAppRoot />,
+    document.getElementById('app')
+  );
 });
