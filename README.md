@@ -6,14 +6,14 @@
 
 更新React DOM的State分兩種:
 
-1. UI state: 負責UI畫面顯示上的狀態更新
+1. UI state: 負責畫面"顯示"上的更新
 2. Domain state: 負責畫面"資料"上的更新
 
-UI state使用Redux管理，本應用有使用react-redux套件的Provider和connect做協助，Provider和connect的原理來自context，connect使用Redux的store.subscribe( ()=> this.forceUpdate(); )強制更新React DOM，來做到UI元件的聯動更新，所以React DOM本身的local state其實沒有被使用到。
+UI state 使用 Redux 管理，本應用有使用 react-redux 套件的 Provider 和 connect 做協助，Provider 和 connect 的原理來自 context，connect 使用 Redux 的 store.subscribe( ()=> this.forceUpdate(); ) 強制更新 React DOM，來做到 UI元件 的聯動更新，所以 React DOM 本身的 local state 其實沒有被使用到。
 
-Domain state由mongoDB/miniMongo儲存，藉由Meteor的Tracker做data的連動追蹤並更新。只要使用createContainer包裹住React DOM即可完成目的。
+Domain state 由 mongoDB/miniMongo 儲存，藉由 Meteor 的 Tracker 做 data 的連動追蹤並更新。只要使用 createContainer 包裹住 React DOM 即可完成目的。
 
-* connect和createContainer可以一起用，同時追蹤UI state和Domain state! 詳見commits.
+* connect 和 createContainer 可以一起用，同時追蹤 UI state 和 Domain state! 詳見 commits.
 
 ### 參考教學：
 
