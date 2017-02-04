@@ -14,6 +14,7 @@ UI state 使用 Redux 管理，本應用有使用 react-redux 套件的 Provider
 Domain state 由 mongoDB/miniMongo 儲存，藉由 Meteor 的 Tracker 做 data 的連動追蹤並更新。只要使用 createContainer 包裹住 React DOM 即可完成目的。
 
 * connect 和 createContainer 可以一起用，同時追蹤 UI state 和 Domain state! 詳見 commits.
+* meteor container所包覆的component如果unmount，會一起取消DB的subscription
 
 ### 參考教學：
 
